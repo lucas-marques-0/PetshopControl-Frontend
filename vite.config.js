@@ -7,12 +7,9 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: 3000,
-    allowedHosts: [
-      ".replit.dev",
-      ".spock.replit.dev"
-    ],
+    allowedHosts: true,  
     hmr: {
-      host: "localhost",
+      host: "localhost"
     }
   }
 })
