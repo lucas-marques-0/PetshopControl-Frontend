@@ -11,8 +11,18 @@ export default function Login() {
   ? `${import.meta.env.VITE_API_URL}/auth/login`
   : "http://localhost:5000/api/auth/login";
 
-  async function handleLogin(e) {
+    async function handleLogin(e) {
     e.preventDefault();
+    
+    Swal.fire({
+      title: "Entrando...",
+      text: "Aguarde um momento",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
 
     try {
       const response = await fetch(API_URL, {
@@ -22,6 +32,8 @@ export default function Login() {
       });
 
       const data = await response.json();
+
+      Swal.close();
 
       if (!response.ok) {
         Swal.fire({
@@ -43,6 +55,8 @@ export default function Login() {
 
     } catch (err) {
       console.error(err);
+
+      Swal.close();
 
       Swal.fire({
         icon: "error",

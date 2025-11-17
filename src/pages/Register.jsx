@@ -15,6 +15,14 @@ export default function Register() {
   async function handleRegister(e) {
     e.preventDefault();
 
+    Swal.fire({
+      title: "Registrando...",
+      text: "Aguarde um momento",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => Swal.showLoading()
+    });
+
     try {
       const res = await fetch(API_URL, {
         method: "POST",
@@ -22,9 +30,18 @@ export default function Register() {
         body: JSON.stringify({ username, email, password }),
       });
 
-      if (!res.ok) throw new Error("Erro no registro");
-
       const data = await res.json();
+
+      Swal.close();
+
+      if (!res.ok) {
+        Swal.fire({
+          icon: "error",
+          title: "Erro ao registrar usuário!",
+          text: data.error || "Verifique os dados e tente novamente."
+        });
+        return;
+      }
 
       Swal.fire({
         icon: "success",
@@ -34,15 +51,17 @@ export default function Register() {
       navigate("/");
 
     } catch (err) {
+      Swal.close();
+
       Swal.fire({
         icon: "error",
         title: "Erro ao registrar usuário!",
+        text: "Falha de conexão com o servidor."
       });
 
       console.error(err);
     }
   }
-
 
   return (
     <div style={{
