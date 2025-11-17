@@ -7,7 +7,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const API_URL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/auth/login`
+  ? `${import.meta.env.VITE_API_URL}/login`
   : "http://localhost:5000/api/auth/login";
 
   async function handleLogin(e) {
