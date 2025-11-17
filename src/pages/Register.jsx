@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -24,13 +25,24 @@ export default function Register() {
       if (!res.ok) throw new Error("Erro no registro");
 
       const data = await res.json();
-      alert(`Usuário ${data.user.username} registrado com sucesso!`);
-      navigate("/"); // volta para o login
+
+      Swal.fire({
+        icon: "success",
+        title: `Usuário ${data.user.username} registrado com sucesso!`,
+      });
+
+      navigate("/");
+
     } catch (err) {
-      alert("Erro ao registrar usuário!");
+      Swal.fire({
+        icon: "error",
+        title: "Erro ao registrar usuário!",
+      });
+
       console.error(err);
     }
   }
+
 
   return (
     <div style={{

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,17 +24,30 @@ export default function Login() {
       const data = await response.json();
 
       if (!response.ok) {
-        alert(data.error || "Erro ao fazer login");
+        Swal.fire({
+          icon: "error",
+          title: "Erro ao fazer login",
+          text: data.error || "Erro ao fazer login"
+        });
         return;
       }
 
       localStorage.setItem("token", data.token);
-      alert("Login bem-sucedido!");
+
+      Swal.fire({
+        icon: "success",
+        title: "Login bem-sucedido!"
+      });
+
       navigate("/home");
 
     } catch (err) {
       console.error(err);
-      alert("Erro de conexão com o servidor");
+
+      Swal.fire({
+        icon: "error",
+        title: "Erro de conexão com o servidor"
+      });
     }
   }
 
