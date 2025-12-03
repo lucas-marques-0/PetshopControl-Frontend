@@ -22,8 +22,8 @@ export default function Home() {
       {/* Menu lateral */}
       <div style={{
         width: "200px",
-        background: "#23c383",
-        color: "#fff",
+        background: "#830153ff",
+        color: "#ffffffff",
         display: "flex",
         flexDirection: "column",
         padding: "20px",
@@ -35,7 +35,7 @@ export default function Home() {
         <button onClick={() => setActiveTab("services")} style={btnStyle}>Serviços</button>
         <button onClick={() => setActiveTab("products")} style={btnStyle}>Produtos</button>
         <button onClick={() => setActiveTab("appointments")} style={btnStyle}>Agendamentos</button>
-        <button onClick={handleLogout} style={{ ...btnStyle, marginTop: "auto", color: "#ffdddd", backgroundColor: '#000', padding:'10px', textAlign: 'center' }}>
+        <button onClick={handleLogout} style={{ ...btnStyle, marginTop: "auto", color: "#ffdddd", backgroundColor: '#000', padding: '10px', textAlign: 'center' }}>
           Sair
         </button>
       </div>
