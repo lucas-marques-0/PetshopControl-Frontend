@@ -8,12 +8,12 @@ export default function Login() {
   const navigate = useNavigate();
 
   const API_URL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/auth/login`
-  : "http://localhost:5000/api/auth/login";
+    ? `${import.meta.env.VITE_API_URL}/auth/login`
+    : "http://localhost:5000/api/auth/login";
 
-    async function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
-    
+
     Swal.fire({
       title: "Entrando...",
       text: "Aguarde um momento",
@@ -72,7 +72,7 @@ export default function Login() {
       width: "100vw",
       justifyContent: "center",
       alignItems: "center",
-      background: "#f2f5f9"
+      background: "#b8b8b8ff"
     }}>
       <div style={{
         background: "#fff",
@@ -86,12 +86,13 @@ export default function Login() {
         textAlign: "center"
       }}>
 
-        <h2 style={{ color: "#333", fontWeight: "900" }}>PetshopControl</h2>
-        <p style={{ fontSize: "14px", color: "#666" }}>Bem-vindo! Entre para continuar</p>
+        <h2 style={{ margin: "10px", fontSize: "30px", color: "#333", fontWeight: "900" }}>PetshopControl 🐾</h2>
+        <p style={{ fontSize: "20px", color: "#292929ff", }}>Bem-vindo! Entre para continuar</p>
 
         <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          
+
           <input
+            className="input-customizado"
             type="email"
             placeholder="Email"
             value={email}
@@ -106,6 +107,7 @@ export default function Login() {
           />
 
           <input
+            className="input-customizado"
             type="password"
             placeholder="Senha"
             value={password}
@@ -115,14 +117,14 @@ export default function Login() {
               borderRadius: "8px",
               border: "1px solid #ccc",
               outline: "none",
-              fontSize: "14px"
+              fontSize: "15px"
             }}
           />
 
-          <button 
+          <button
             type="submit"
             style={{
-              background: "#23c383",
+              background: "#dc367eff",
               color: "#fff",
               padding: "12px",
               borderRadius: "8px",
@@ -132,28 +134,28 @@ export default function Login() {
               fontWeight: "600",
               transition: "0.2s"
             }}
-            onMouseOver={(e)=>e.target.style.background="#1ca56e"}
-            onMouseOut={(e)=>e.target.style.background="#23c383"}
+            onMouseOver={(e) => e.target.style.background = "#830153ff"}
+            onMouseOut={(e) => e.target.style.background = "#dc367eff"}
           >
             Entrar
           </button>
 
         </form>
 
-        <button 
+        <button
           onClick={() => navigate("/register")}
           style={{
             background: "#fff",
-            border: "1px solid #23c383",
-            color: "#23c383",
+            border: "1px solid #dc367eff",
+            color: "#dc367eff",
             padding: "10px",
             borderRadius: "8px",
             cursor: "pointer",
             fontWeight: "600",
             transition: "0.2s"
           }}
-          onMouseOver={(e)=>{e.target.style.background="#23c383"; e.target.style.color="#fff"}}
-          onMouseOut={(e)=>{e.target.style.background="#fff"; e.target.style.color="#23c383"}}
+          onMouseOver={(e) => { e.target.style.background = "#830153ff"; e.target.style.color = "#fff" }}
+          onMouseOut={(e) => { e.target.style.background = "#fff"; e.target.style.color = "#dc367eff" }}
         >
           Criar Conta
         </button>

@@ -9,8 +9,8 @@ export default function Register() {
   const navigate = useNavigate();
 
   const API_URL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/auth/register`
-  : "http://localhost:5000/api/auth/register";
+    ? `${import.meta.env.VITE_API_URL}/auth/register`
+    : "http://localhost:5000/api/auth/register";
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -70,7 +70,7 @@ export default function Register() {
       width: "100vw",
       justifyContent: "center",
       alignItems: "center",
-      background: "#f2f5f9"
+      background: "#b8b8b8ff"
     }}>
       <div style={{
         background: "#fff",
@@ -84,12 +84,13 @@ export default function Register() {
         textAlign: "center"
       }}>
 
-        <h2 style={{ marginBottom: "5px", color: "#333", fontWeight: "600" }}>Criar Conta 🐾</h2>
-        <p style={{ fontSize: "14px", color: "#666" }}>Preencha os dados abaixo</p>
+        <h2 style={{ fontSize: "30px", marginBottom: "5px", color: "#333", fontWeight: "900" }}>Criar Conta</h2>
+        <p style={{ fontSize: "20px", color: "#292929ff" }}>Preencha os dados abaixo</p>
 
         <form onSubmit={handleRegister} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          
+
           <input
+            className="input-customizado"
             type="text"
             placeholder="Nome de usuário"
             value={username}
@@ -104,6 +105,7 @@ export default function Register() {
           />
 
           <input
+            className="input-customizado"
             type="email"
             placeholder="Email"
             value={email}
@@ -118,6 +120,7 @@ export default function Register() {
           />
 
           <input
+            className="input-customizado"
             type="password"
             placeholder="Senha"
             value={password}
@@ -131,10 +134,10 @@ export default function Register() {
             }}
           />
 
-          <button 
+          <button
             type="submit"
             style={{
-              background: "#23c383",
+              background: "#dc367eff",
               color: "#fff",
               padding: "12px",
               borderRadius: "8px",
@@ -144,29 +147,29 @@ export default function Register() {
               fontWeight: "600",
               transition: "0.2s"
             }}
-            onMouseOver={(e)=>e.target.style.background="#1ca56e"}
-            onMouseOut={(e)=>e.target.style.background="#23c383"}
+            onMouseOver={(e) => e.target.style.background = "#830153ff"}
+            onMouseOut={(e) => e.target.style.background = "#dc367eff"}
           >
             Registrar
           </button>
 
         </form>
 
-        <button 
+        <button
           onClick={() => navigate("/")}
           style={{
             marginTop: "10px",
             background: "#fff",
-            border: "1px solid #23c383",
-            color: "#23c383",
+            border: "1px solid #dc367eff",
+            color: "#dc367eff",
             padding: "10px",
             borderRadius: "8px",
             cursor: "pointer",
             fontWeight: "600",
             transition: "0.2s"
           }}
-          onMouseOver={(e)=>{e.target.style.background="#23c383"; e.target.style.color="#fff"}}
-          onMouseOut={(e)=>{e.target.style.background="#fff"; e.target.style.color="#23c383"}}
+          onMouseOver={(e) => { e.target.style.background = "#830153ff"; e.target.style.color = "#fff" }}
+          onMouseOut={(e) => { e.target.style.background = "#fff"; e.target.style.color = "#dc367eff" }}
         >
           Voltar para Login
         </button>
