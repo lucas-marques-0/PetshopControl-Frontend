@@ -52,155 +52,91 @@ export default function ProductsCRUD() {
   }
 
   return (
-    <div style={{ padding: "30px", fontFamily: "Roboto, Arial, sans-serif", background: '#f8f9fa' }}>
-      <h2>🛒 Gestão de Produtos</h2>
+    <div style={{ padding: "20px" }}>
+      <h2>Produtos</h2>
 
-      {/* 1. Mensagem de Status Aprimorada */}
-      {message && (
-        <div
-          style={{
-            marginBottom: "20px",
-            padding: "15px",
-            // Estilo baseado no conteúdo da mensagem
-            background: message.includes("✅") ? "#d4edda" : "#f8d7da",
-            border: `1px solid ${message.includes("✅") ? "#c3e6cb" : "#f5c6cb"}`,
-            borderRadius: "8px",
-            fontWeight: "600",
-            color: message.includes("✅") ? "#155724" : "#721c24",
-          }}
-        >
-          {message}
-        </div>
-      )}
+      {message && (
+        <div
+          style={{
+            marginBottom: "10px",
+            padding: "10px",
+            background: message.includes("✅") ? "#cbf7cbff" : "#fac7c7ff",
+            borderRadius: "8px",
+            fontWeight: "600",
+            color: "#0c0c0cff",
+          }}
+        >
+          {message}
+        </div>
+      )}
 
-      {/* 2. Formulário com Layout Grid e Labels */}
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", // Responsivo
-          gap: "15px",
-          padding: "20px",
-          marginBottom: "25px",
-          border: "1px solid #ddd",
-          borderRadius: "10px",
-          backgroundColor: "#fff"
-        }}
-      >
-        <label style={labelStyle}>
-          Nome:
-          <input
-            name="name"
-            placeholder="Ex: Notebook"
-            value={form.name}
-            onChange={handleChange}
-            style={inputStyle}
-          />
-        </label>
-        
-        {/* A descrição deve usar um textarea se o espaço permitir, mas mantendo input para não alterar a lógica */}
-        <label style={labelStyle}>
-          Descrição:
-          <input
-            name="description"
-            placeholder="Breve descrição do item"
-            value={form.description}
-            onChange={handleChange}
-            style={inputStyle}
-          />
-        </label>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          gap: "10px",
+          marginBottom: "15px",
+          flexWrap: "wrap",
+        }}
+      >
+        <input
+          name="name"
+          placeholder="Nome"
+          value={form.name}
+          onChange={handleChange}
+        />
+        <input
+          name="description"
+          placeholder="Descrição"
+          value={form.description}
+          onChange={handleChange}
+        />
+        <input
+          name="price"
+          placeholder="Preço"
+          value={form.price}
+          onChange={handleChange}
+        />
+        <input
+          name="stock"
+          placeholder="Estoque"
+          value={form.stock}
+          onChange={handleChange}
+        />
+        <button type="submit">{editingId ? "Salvar" : "Adicionar"}</button>
+      </form>
 
-        <label style={labelStyle}>
-          Preço (R$):
-          <input
-            name="price"
-            placeholder="0.00"
-            value={form.price}
-            onChange={handleChange}
-            type="number"
-            min="0.01"
-            step="0.01"
-            style={inputStyle}
-          />
-        </label>
-
-        <label style={labelStyle}>
-          Estoque:
-          <input
-            name="stock"
-            placeholder="Quantidade em estoque"
-            value={form.stock}
-            onChange={handleChange}
-            type="number"
-            min="0"
-            style={inputStyle}
-          />
-        </label>
-
-        {/* Botão de Submit Aprimorado */}
-        <button 
-          type="submit"
-          style={{
-            backgroundColor: editingId ? "#ffc107" : "#007bff",
-            color: "#fff",
-            border: "none",
-            padding: "10px 15px",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            alignSelf: 'end', 
-            height: '40px'
-          }}
-        >
-          {editingId ? "✏️ Salvar Alterações" : "➕ Adicionar Produto"}
-        </button>
-      </form>
-
-      {/* 3. Tabela de Produtos Estilizada */}
-      {products.length > 0 ? (
-        <table style={tableStyle}>
-          <thead>
-            <tr style={{ background: '#343a40', color: '#fff' }}>
-              <th style={thStyle}>Nome</th>
-              <th style={thStyle}>Descrição</th>
-              <th style={thStyle}>Preço</th>
-              <th style={thStyle}>Estoque</th>
-              <th style={thStyle}>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((p, index) => (
-              <tr 
-                key={p.id} 
-                style={{ backgroundColor: index % 2 === 0 ? "#fff" : "#f1f1f1" }} // Linhas alternadas
-              >
-                <td style={tdStyle}>{p.name}</td>
-                <td style={tdStyle}>{p.description}</td>
-                <td style={tdStyle}>R$ **{Number(p.price).toFixed(2).replace('.', ',')}**</td> 
-                <td style={tdStyle}>{p.stock}</td>
-                <td style={{ ...tdStyle, display: 'flex', gap: '8px', justifyContent: 'center'}}>
-                  <button 
-                    onClick={() => handleEdit(p)}
-                    style={actionButtonStyle("#17a2b8")} // Cor para Editar
-                  >
-                    Editar
-                  </button>
-                  <button 
-                    onClick={() => handleDelete(p.id)}
-                    style={actionButtonStyle("#dc3545")} // Cor para Deletar
-                  >
-                    Deletar
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p style={{ marginTop: "15px", fontStyle: "italic", color: "#666", padding: "15px", borderLeft: "3px solid #007bff" }}>
-          📦 Nenhum produto cadastrado ainda. Use o formulário acima para adicionar o primeiro item!
-        </p>
-      )}
-    </div>
-  );
+      {products.length > 0 ? (
+        <table border="1" cellPadding="5">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th>Estoque</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr key={p.id}>
+                <td>{p.name}</td>
+                <td>{p.description}</td>
+                <td>R$ {Number(p.price).toFixed(2)}</td>
+                <td>{p.stock}</td>
+                <td style={{ display: 'flex', gap: '5px'}}>
+                  <button onClick={() => handleEdit(p)}>Editar</button>
+                  <button onClick={() => handleDelete(p.id)}>Deletar</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p style={{ marginTop: "10px", fontStyle: "italic", color: "#5e5e5eff" }}>
+          📦 Nenhum produto cadastrado ainda.
+        </p>
+      )}
+    </div>
+  );
 }
