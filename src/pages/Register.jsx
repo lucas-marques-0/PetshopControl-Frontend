@@ -65,113 +65,154 @@ export default function Register() {
 
   return (
     <div style={{
-      display: "flex",
-      height: "100vh",
-      width: "100vw",
-      justifyContent: "center",
-      alignItems: "center",
-      background: "#f2f5f9"
+  display: "flex",
+  height: "100vh",
+  width: "100vw",
+  justifyContent: "center",
+  alignItems: "center",
+  background: "linear-gradient(135deg, #e8f9f2, #d6f0ff)"
+}}>
+  <div style={{
+    background: "#fff",
+    padding: "40px",
+    borderRadius: "18px",
+    width: "350px",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.08)",
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+    textAlign: "center",
+    transition: "0.3s"
+  }}>
+
+    <h2 style={{ 
+      marginBottom: "0px",
+      color: "#1c3d32",
+      fontWeight: "900",
+      fontSize: "26px"
     }}>
-      <div style={{
+      Criar Conta 🐾
+    </h2>
+
+    <p style={{ 
+      fontSize: "15px",
+      color: "#3a4f46"
+    }}>
+      Preencha os dados abaixo
+    </p>
+
+    <form 
+      onSubmit={handleRegister} 
+      style={{ display: "flex", flexDirection: "column", gap: "14px" }}
+    >
+
+      <input
+        type="text"
+        placeholder="Nome de usuário"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        style={{
+          padding: "12px",
+          borderRadius: "10px",
+          border: "1px solid #cfd8dc",
+          outline: "none",
+          fontSize: "14px",
+          transition: "0.2s"
+        }}
+        onFocus={(e) => { e.target.style.border = "1px solid #23c383"; }}
+        onBlur={(e) => { e.target.style.border = "1px solid #cfd8dc"; }}
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        style={{
+          padding: "12px",
+          borderRadius: "10px",
+          border: "1px solid #cfd8dc",
+          outline: "none",
+          fontSize: "14px",
+          transition: "0.2s"
+        }}
+        onFocus={(e) => { e.target.style.border = "1px solid #23c383"; }}
+        onBlur={(e) => { e.target.style.border = "1px solid #cfd8dc"; }}
+      />
+
+      <input
+        type="password"
+        placeholder="Senha"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        style={{
+          padding: "12px",
+          borderRadius: "10px",
+          border: "1px solid #cfd8dc",
+          outline: "none",
+          fontSize: "14px",
+          transition: "0.2s"
+        }}
+        onFocus={(e) => { e.target.style.border = "1px solid #23c383"; }}
+        onBlur={(e) => { e.target.style.border = "1px solid #cfd8dc"; }}
+      />
+
+      <button 
+        type="submit"
+        style={{
+          background: "#23c383",
+          color: "#fff",
+          padding: "13px",
+          borderRadius: "10px",
+          border: "none",
+          cursor: "pointer",
+          fontSize: "16px",
+          fontWeight: "700",
+          transition: "0.25s",
+          boxShadow: "0 4px 12px rgba(35,195,131,0.25)"
+        }}
+        onMouseOver={(e) => {
+          e.target.style.background = "#1ba974";
+          e.target.style.transform = "scale(1.03)";
+        }}
+        onMouseOut={(e) => {
+          e.target.style.background = "#23c383";
+          e.target.style.transform = "scale(1)";
+        }}
+      >
+        Registrar
+      </button>
+
+    </form>
+
+    <button 
+      onClick={() => navigate("/")}
+      style={{
+        marginTop: "5px",
         background: "#fff",
-        padding: "30px",
-        borderRadius: "14px",
-        width: "320px",
-        boxShadow: "0px 6px 22px rgba(0,0,0,0.1)",
-        display: "flex",
-        flexDirection: "column",
-        gap: "15px",
-        textAlign: "center"
-      }}>
+        border: "2px solid #23c383",
+        color: "#23c383",
+        padding: "11px",
+        borderRadius: "10px",
+        cursor: "pointer",
+        fontWeight: "700",
+        transition: "0.25s"
+      }}
+      onMouseOver={(e) => {
+        e.target.style.background = "#23c383"; 
+        e.target.style.color = "#fff";
+        e.target.style.transform = "scale(1.03)";
+      }}
+      onMouseOut={(e) => {
+        e.target.style.background = "#fff"; 
+        e.target.style.color = "#23c383";
+        e.target.style.transform = "scale(1)";
+      }}
+    >
+      Voltar para Login
+    </button>
 
-        <h2 style={{ marginBottom: "5px", color: "#333", fontWeight: "600" }}>Criar Conta 🐾</h2>
-        <p style={{ fontSize: "14px", color: "#666" }}>Preencha os dados abaixo</p>
-
-        <form onSubmit={handleRegister} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          
-          <input
-            type="text"
-            placeholder="Nome de usuário"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{
-              padding: "12px",
-              borderRadius: "8px",
-              border: "1px solid #ccc",
-              outline: "none",
-              fontSize: "14px"
-            }}
-          />
-
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{
-              padding: "12px",
-              borderRadius: "8px",
-              border: "1px solid #ccc",
-              outline: "none",
-              fontSize: "14px"
-            }}
-          />
-
-          <input
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{
-              padding: "12px",
-              borderRadius: "8px",
-              border: "1px solid #ccc",
-              outline: "none",
-              fontSize: "14px"
-            }}
-          />
-
-          <button 
-            type="submit"
-            style={{
-              background: "#23c383",
-              color: "#fff",
-              padding: "12px",
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "15px",
-              fontWeight: "600",
-              transition: "0.2s"
-            }}
-            onMouseOver={(e)=>e.target.style.background="#1ca56e"}
-            onMouseOut={(e)=>e.target.style.background="#23c383"}
-          >
-            Registrar
-          </button>
-
-        </form>
-
-        <button 
-          onClick={() => navigate("/")}
-          style={{
-            marginTop: "10px",
-            background: "#fff",
-            border: "1px solid #23c383",
-            color: "#23c383",
-            padding: "10px",
-            borderRadius: "8px",
-            cursor: "pointer",
-            fontWeight: "600",
-            transition: "0.2s"
-          }}
-          onMouseOver={(e)=>{e.target.style.background="#23c383"; e.target.style.color="#fff"}}
-          onMouseOut={(e)=>{e.target.style.background="#fff"; e.target.style.color="#23c383"}}
-        >
-          Voltar para Login
-        </button>
-
-      </div>
-    </div>
+  </div>
+</div>
   );
 }
