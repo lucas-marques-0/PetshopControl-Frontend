@@ -12,7 +12,7 @@ export default function Home() {
 
   function handleLogout() {
     localStorage.removeItem("token");
-    alert("Você saiu da sua conta com sucesso!");
+    alert("Você saiu da sua conta com sucesso!!");
     navigate("/");
   }
 
@@ -21,13 +21,13 @@ export default function Home() {
     <div style={{ display: "flex", height: "100vh" }}>
       {/* Menu lateral */}
       <div style={{
-        width: "200px",
+        width: "210px",
         background: "#23c383",
         color: "#fff",
         display: "flex",
         flexDirection: "column",
-        padding: "20px",
-        gap: "15px"
+        padding: "25px",
+        gap: "20px"
       }}>
         <h2>Petshop</h2>
         <button onClick={() => setActiveTab("pets")} style={btnStyle}>Pets</button>
@@ -35,7 +35,7 @@ export default function Home() {
         <button onClick={() => setActiveTab("services")} style={btnStyle}>Serviços</button>
         <button onClick={() => setActiveTab("products")} style={btnStyle}>Produtos</button>
         <button onClick={() => setActiveTab("appointments")} style={btnStyle}>Agendamentos</button>
-        <button onClick={handleLogout} style={{ ...btnStyle, marginTop: "auto", color: "#ffdddd", backgroundColor: '#000', padding:'10px', textAlign: 'center' }}>
+        <button onClick={handleLogout} style={{ ...btnStyle, marginTop: "auto", color: "#ffffffff", backgroundColor: '#000', padding: '10px', textAlign: 'center' }}>
           Sair
         </button>
       </div>
@@ -55,10 +55,10 @@ export default function Home() {
 // Botão do menu lateral
 const btnStyle = {
   background: "transparent",
-  color: "#fff",
+  color: "#ffffffff",
   border: "none",
   textAlign: "left",
   cursor: "pointer",
   padding: "8px 0",
-  fontSize: "16px"
+  fontSize: "20px"
 };
