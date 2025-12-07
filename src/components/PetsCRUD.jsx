@@ -66,7 +66,7 @@ export default function PetsCRUD() {
           style={{
             marginBottom: "10px",
             padding: "10px",
-            background: message.includes("✅") ? "#d1f7d1" : "#ffd1d1",
+            background: message.includes("✅") ? "#b5f7b5ff" : "#fdb0b0ff",
             borderRadius: "8px",
             fontWeight: "600",
             color: "#000",

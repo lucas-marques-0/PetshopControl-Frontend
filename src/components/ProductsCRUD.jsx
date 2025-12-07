@@ -60,7 +60,7 @@ export default function ProductsCRUD() {
           style={{
             marginBottom: "10px",
             padding: "10px",
-            background: message.includes("✅") ? "#d1f7d1" : "#ffd1d1",
+            background: message.includes("✅") ? "#b7f7b7ff" : "#ffd1d1",
             borderRadius: "8px",
             fontWeight: "600",
             color: "#000",
@@ -133,7 +133,7 @@ export default function ProductsCRUD() {
           </tbody>
         </table>
       ) : (
-        <p style={{ marginTop: "10px", fontStyle: "italic", color: "#666" }}>
+        <p style={{ marginTop: "10px", fontStyle: "italic", color: "#525252ff" }}>
           📦 Nenhum produto cadastrado ainda.
         </p>
       )}
